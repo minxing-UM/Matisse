@@ -1,0 +1,20 @@
+# User files: never commit a personal installation as a source release.
+/config/
+/repository/
+/index/
+/Modelfile
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+.env
+.env.*
+/.venv/
+/dist/
+__pycache__/
+*.py[cod]
+/tests/.test-state-*/
+.DS_Store
+.idea/
+.vscode/
