@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <title>Matisse · 工作演示版</title>
+  <link rel="stylesheet" href="/static/demo.css">
+  <link rel="stylesheet" href="/static/language.css">
+  <script src="/static/i18n.js" defer></script>
+  <script src="/static/demo.js" defer></script>
+</head>
+<body>
+  <div class="demo-shell">
+    <header class="demo-header">
+      <div class="demo-brand"><span class="demo-mark" aria-hidden="true">m.</span><div><strong>Matisse</strong><span class="demo-eyebrow">工作演示版 / WORK DEMO</span></div></div>
+      <nav aria-label="模式切换"><label class="language-control" for="language-select"><span>语言</span><select id="language-select" aria-label="界面与回复语言"><option value="zh" data-i18n-skip>中文</option><option value="en" data-i18n-skip>English</option></select></label><button id="demo-new" type="button">＋ 新对话</button><a href="/" id="demo-personal">返回个人模式 ↗</a></nav>
+    </header>
+
+    <section class="tier-picker" id="tier-picker" aria-labelledby="tier-title">
+      <p class="demo-kicker">每一次对话，从关系开始</p>
+      <h1 id="tier-title">这一次，我们是什么关系？</h1>
+      <p class="tier-intro">同一个马蒂斯，以适合你们关系的方式交流。<br>先选择关系档位，再开始这一轮对话。</p>
+      <form id="tier-form">
+        <fieldset id="tier-options"><legend class="sr-only">选择本次对话的关系档位</legend>
+          <label class="tier-card"><input type="radio" name="tier" value="T0" required><span class="tier-code">T0 <span aria-hidden="true">⌑</span></span><strong>本人</strong><span>最亲近的伴侣<br>亲密、放松，分享自己的感受</span><small>需要密码</small></label>
+          <label class="tier-card"><input type="radio" name="tier" value="T1"><span class="tier-code">T1</span><strong>朋友 / 闺蜜</strong><span>熟悉而自在<br>坦率、打趣，也认真倾听</span><small>熟悉的朋友</small></label>
+          <label class="tier-card"><input type="radio" name="tier" value="T2"><span class="tier-code">T2</span><strong>熟人 / 同事</strong><span>友善而有分寸<br>可靠、具体，尊重私人边界</span><small>日常相处</small></label>
+          <label class="tier-card"><input type="radio" name="tier" value="T3"><span class="tier-code">T3</span><strong>初次认识</strong><span>温暖地打个招呼<br>保留距离，慢慢了解彼此</span><small>从这里认识</small></label>
+        </fieldset>
+        <div class="tier-start">
+          <div id="tier-password-wrap" hidden><label for="tier-password">T0 密码</label><input type="password" id="tier-password" autocomplete="off" maxlength="128" placeholder="输入密码解锁 T0"></div>
+          <p class="demo-error" id="tier-error" role="alert"></p>
+          <button class="primary" id="tier-start" type="submit" disabled>选择关系后开始 →</button>
+        </div>
+      </form>
+      <p class="demo-note">独立演示会话 · 不载入个人聊天与记忆 · 新开对话重新选择</p>
+    </section>
+
+    <main class="demo-workspace" id="demo-workspace" hidden>
+      <section class="demo-conversation" aria-label="演示对话">
+        <div class="demo-conversation-heading"><div><span class="demo-kicker">实时对话</span><h1>和马蒂斯聊聊</h1></div><span class="tier-badge" id="demo-tier-label"></span></div>
+        <div class="demo-messages" id="demo-messages" role="log" aria-live="polite"></div>
+        <div class="demo-composer-wrap">
+          <p class="demo-status" id="demo-status" role="status"></p>
+          <form class="demo-composer" id="demo-composer"><label class="sr-only" for="demo-input">消息内容</label><textarea id="demo-input" rows="2" maxlength="6000" placeholder="从一个问候，或一件想分享的事开始…" required></textarea><button class="primary" id="demo-send" type="submit" aria-label="发送消息">发送 ↑</button></form>
+          <p class="demo-note">Enter 发送 · Shift + Enter 换行 · 本轮聊天仅在服务运行期间临时保留</p>
+        </div>
+      </section>
+      <aside class="demo-state" aria-label="演示情绪状态">
+        <p class="demo-kicker">情绪延续</p><h2>此刻的心情</h2><span class="mood-label" id="demo-mood-label">平静</span>
+        <p class="state-description">每次回应带来情绪变化。<br>这一刻的感受，会进入下一次对话。</p>
+        <div id="demo-emotions"></div>
+        <div class="state-footnote"><span class="state-dot" aria-hidden="true"></span><p>本轮独立状态<br><span>数值 0–100，右侧为本次变化</span></p></div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>

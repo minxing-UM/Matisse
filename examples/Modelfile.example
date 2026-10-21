@@ -1,0 +1,8 @@
+# Choose a model tag from README.md, or a local GGUF path.
+FROM qwen3:8b-q4_K_M
+
+# Technical defaults only. Customize the character in config/personality.md.
+# The application's settings override these values when sending requests.
+PARAMETER temperature 0.7
+PARAMETER num_ctx 8192
+PARAMETER num_predict 1024
